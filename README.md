@@ -1,6 +1,6 @@
 Project Description:
 
-This project, named "KSP (Placeholder Encryption and Face Recognition)", aims to enhance data security and access control through advanced techniques such as face recognition and two-factor authentication (2FA) using HMAC-based One-Time Password (HOTP) and Time-based One-Time Password (TOTP). Additionally, the project utilizes Recurrent Neural Network (RNN) algorithms for generating and managing placeholders, ensuring the privacy and integrity of sensitive data.
+This project, named "Copwatch (Placeholder Encryption and Face Recognition)", aims to enhance data security and access control through advanced techniques such as face recognition and two-factor authentication (2FA) using HMAC-based One-Time Password (HOTP) and Time-based One-Time Password (TOTP). Additionally, the project utilizes Recurrent Neural Network (RNN) algorithms for generating and managing placeholders, ensuring the privacy and integrity of sensitive data.
 
 Key Features:
 
