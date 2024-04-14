@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS OTP Demo</title>
+    <style>
+        body {
+            margin: 0 auto;
+            font-family: Tahoma, Verdana, Arial, sans-serif;
+            width: 45em;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>OTP Generation</h1>
+    <p>Javascript Implementation of 2 Factor Auth</p>
+    <hr>
+    <p id="secret">Secret: </p>
+    <h2 id="code-1">TOTP code</h2>
+    <p id="ticker">timer</p>
+    <hr>
+    <p id="secret-2">Secret: </p>
+    <h2 id="code-2">HOTP code</h2>
+    <p>Counter value is: <span id="counter"></span></p>
+    <button id="generateBtn">Get new code</button>
+
+    <script>
+        const generateBtn = document.getElementById('generateBtn');
+        const secret1 = "23TplPdS46Juzcyx"; // Replace with your secret
+        const secret2 = "abcdefghijklmnop"; // Replace with another secret
+        
+
+        const updateTotp = async () => {
+            try {
+                const response = await fetch('/getotp?secret=' + secret1);
+                const data = await response.json();
+                document.getElementById('code-1').innerText = "TOTP code: " + data.otp;
+            } catch (error) {
+                console.error('Error fetching TOTP:', error);
+            }
+        };
+
+        const updateHotp = async () => {
+            try {
+                const response = await fetch('/getotp?secret=' + secret2);
+                const data = await response.json();
+                document.getElementById('code-2').innerText = "HOTP code: " + data.otp;
+            } catch (error) {
+                console.error('Error fetching HOTP:', error);
+            }
+        };
+
+        generateBtn.addEventListener('click', () => {
+            updateHotp();
+        });
+
+        setInterval(updateTotp, 30000); // Update TOTP every 30 seconds
+        setInterval(updateHotp, 30000); // Update HOTP every 30 seconds
+    </script>
+</body>
+</html>
